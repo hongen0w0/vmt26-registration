@@ -137,6 +137,17 @@ export default function Home() {
         <div className="hero-grid">
           <div className="hero-grid-glass" aria-hidden="true" />
 
+          <div className="stage-lockup" aria-hidden="true">
+            <Image
+              src="/assets/vmt26/logo-white.png"
+              alt=""
+              width={300}
+              height={208}
+              priority
+            />
+            <span>Sunway Velocity</span>
+          </div>
+
           <div className="hero-copy">
             <p className="eyebrow">Velocity maimai Tournament 2026</p>
             <h1>VMT26</h1>
@@ -153,37 +164,45 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="character-stage" aria-label="VMT26 main characters Salt and Milk">
+          <div className="hero-characters" aria-label="VMT26 main characters Salt and Milk">
+            <Image
+              className="character-silhouette silhouette-salt"
+              src="/assets/vmt26/hiro/Salt_Silhouette.png"
+              alt=""
+              width={5000}
+              height={4092}
+              aria-hidden="true"
+              priority
+              sizes="(max-width: 620px) 58vw, (max-width: 940px) 58vw, 640px"
+            />
+            <Image
+              className="character-silhouette silhouette-milk"
+              src="/assets/vmt26/hiro/Milk_Silhouette.png"
+              alt=""
+              width={5000}
+              height={4092}
+              aria-hidden="true"
+              priority
+              sizes="(max-width: 620px) 58vw, (max-width: 940px) 58vw, 640px"
+            />
             <Image
               className="character character-salt"
-              src="/assets/vmt26/salt-badge.png"
+              src="/assets/vmt26/hiro/Salt.png"
               alt="Salt, one of the VMT26 main characters"
-              width={720}
-              height={720}
+              width={5000}
+              height={4092}
               priority
-              sizes="(max-width: 860px) 58vw, 340px"
+              sizes="(max-width: 620px) 62vw, (max-width: 940px) 64vw, 740px"
             />
             <Image
               className="character character-milk"
-              src="/assets/vmt26/milk-badge.png"
+              src="/assets/vmt26/hiro/Milk.png"
               alt="Milk, one of the VMT26 main characters"
-              width={720}
-              height={720}
+              width={5000}
+              height={4092}
               priority
-              sizes="(max-width: 860px) 58vw, 340px"
+              sizes="(max-width: 620px) 62vw, (max-width: 940px) 64vw, 740px"
             />
-            <div className="stage-lockup">
-              <Image
-                src="/assets/vmt26/logo-white.png"
-                alt="VMT26 tournament logo"
-                width={300}
-                height={208}
-                priority
-              />
-              <span>Sunway Velocity</span>
-            </div>
-            <span className="character-label salt-label">Salt</span>
-            <span className="character-label milk-label">Milk</span>
           </div>
         </div>
       </section>
