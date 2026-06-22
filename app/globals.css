@@ -192,7 +192,7 @@ main {
   gap: clamp(32px, 6vw, 76px);
   --hero-board-radius: 18px;
   --hero-board-frame: clamp(28px, 4vw, 50px);
-  --hero-board-opacity: 0.6;
+  --hero-board-opacity: 1;
   --hero-board-cell: clamp(86px, 10vw, 132px);
   --hero-board-line: rgba(255, 255, 255, 0.58);
   --hero-board-cream: rgba(255, 250, 246, 0.72);
@@ -290,8 +290,8 @@ main {
   z-index: -1;
   border-radius: var(--hero-board-radius);
   background: #fff;
-  opacity: 0.6;
-  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+  opacity: 0.7;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 19px 38px, rgba(0, 0, 0, 0.42) 0px 15px 12px;
   pointer-events: none;
 }
 
