@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BackgroundBoard } from "./background-board";
 import { MobileCharacterSwitcher } from "./mobile-character-switcher";
 
 const googleFormUrl =
@@ -136,7 +137,7 @@ export default function Home() {
         <div className="velocity-stripe" aria-hidden="true" />
 
         <div className="hero-grid">
-          <div className="hero-grid-glass" aria-hidden="true" />
+          <BackgroundBoard />
 
           <div className="stage-lockup" aria-hidden="true">
             <Image
