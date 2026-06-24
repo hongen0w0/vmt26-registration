@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { MobileCharacterSwitcher } from "./mobile-character-switcher";
 
 const googleFormUrl =
   "https://docs.google.com/forms/d/19Vv2T6xnSlqc_2tliPQHYPvnyg9GbMJAzeQlw6r0dkc/edit";
@@ -147,6 +148,8 @@ export default function Home() {
             />
             <span>Sunway Velocity</span>
           </div>
+
+          <MobileCharacterSwitcher />
 
           <div className="hero-copy">
             <p className="eyebrow">Velocity maimai Tournament 2026</p>
