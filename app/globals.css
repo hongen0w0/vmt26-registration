@@ -1842,7 +1842,13 @@ h3 {
   }
 }
 
-@media (max-width: 620px) {
+@media (min-width: 941px) and (max-width: 1440px) {
+  .hero-grid {
+    width: calc(100% - clamp(64px, 8vw, 112px));
+  }
+}
+
+@media (max-width: 940px) {
   .hero-section {
     min-height: 100dvh;
     padding: 10px 14px 18px;
@@ -2333,7 +2339,72 @@ h3 {
   }
 }
 
-@media (max-width: 620px) and (max-height: 850px) {
+@media (min-width: 620px) and (max-width: 940px) {
+  .hero-grid {
+    width: min(calc(112.5vw - 257.5px), calc(100% - 56px));
+    max-width: none;
+    padding-bottom: clamp(20px, 3vw, 34px);
+    --background-board-cell: clamp(68px, 10vw, 94px);
+  }
+
+  .mobile-character-switcher {
+    width: calc(100% + clamp(52px, 8vw, 76px));
+    max-width: none;
+    margin-right: calc(clamp(52px, 8vw, 76px) / -2);
+    margin-left: calc(clamp(52px, 8vw, 76px) / -2);
+  }
+
+  .mobile-character-viewport {
+    height: clamp(360px, 58vw, 545px);
+  }
+
+  .mobile-character-silhouette {
+    width: clamp(550px, 98vw, 870px);
+    bottom: clamp(-210px, -22vw, -140px);
+  }
+
+  .mobile-character-art {
+    width: clamp(520px, 92vw, 820px);
+    bottom: clamp(-230px, -23vw, -148px);
+  }
+
+  .hero-copy {
+    width: min(calc(100% - 48px), 600px);
+  }
+
+  .hero-copy h1 {
+    margin-top: clamp(76px, 10vw, 104px);
+    font-size: clamp(4rem, 10vw, 6rem);
+  }
+
+  .hero-copy .eyebrow {
+    font-size: clamp(0.68rem, 1.35vw, 0.82rem);
+  }
+
+  .hero-text {
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    line-height: 1.5;
+  }
+
+  .hero-actions {
+    width: min(100%, 520px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-actions .primary-link,
+  .hero-actions .secondary-link {
+    min-height: clamp(44px, 5.4vw, 52px);
+    font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  }
+
+  .mobile-character-switch {
+    width: clamp(44px, 5.6vw, 52px);
+    height: clamp(44px, 5.6vw, 52px);
+  }
+}
+
+@media (max-width: 940px) and (max-height: 850px) {
   .topbar {
     margin-bottom: 18px;
   }
@@ -2347,7 +2418,7 @@ h3 {
   }
 }
 
-@media (max-width: 620px) and (prefers-reduced-motion: no-preference) {
+@media (max-width: 940px) and (prefers-reduced-motion: no-preference) {
   .mobile-character-layer {
     transition: opacity 220ms ease, transform 220ms ease;
   }
