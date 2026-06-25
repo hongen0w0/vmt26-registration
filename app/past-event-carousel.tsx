@@ -361,13 +361,6 @@ export function PastEventCarousel({ photos }: PastEventCarouselProps) {
         </div>
 
         <footer className="vmt-post-footer">
-          <div className="vmt-post-actions" aria-hidden="true">
-            <span><HeartIcon /></span>
-            <span><CommentIcon /></span>
-            <span><ShareIcon /></span>
-            <span className="is-bookmark"><BookmarkIcon /></span>
-          </div>
-
           <div className="vmt-carousel-dots" aria-label="Choose a VMT24 photo">
             {photos.map((photo, index) => (
               <button
@@ -379,6 +372,13 @@ export function PastEventCarousel({ photos }: PastEventCarouselProps) {
                 aria-current={index === activeIndex ? "true" : undefined}
               />
             ))}
+          </div>
+
+          <div className="vmt-post-actions" aria-hidden="true">
+            <span><HeartIcon /></span>
+            <span><CommentIcon /></span>
+            <span><ShareIcon /></span>
+            <span className="is-bookmark"><BookmarkIcon /></span>
           </div>
 
           <p className="vmt-post-likes">VMT24 community archive</p>

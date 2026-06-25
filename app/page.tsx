@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { BackgroundBoard } from "./background-board";
-import { MobileCharacterSwitcher } from "./mobile-character-switcher";
+import { CrewCardTrack } from "./crew-card-track";
+import { HeroShowcase } from "./hero-showcase";
 import { PastEventCarousel } from "./past-event-carousel";
 import { RulesJumpNav } from "./rules-jump-nav";
 
@@ -281,6 +281,98 @@ const faqs = [
   }
 ];
 
+const crewRoles = [
+  {
+    role: "Tournament Host",
+    members: [
+      { name: "Cumori", discord: "cumori_" },
+      { name: "Ronfreddy", discord: "ronfreddy" }
+    ]
+  },
+  {
+    role: "Emcee (MC)",
+    members: [
+      { name: "Hongen", discord: "hongen0w0" },
+      { name: "Megumin", discord: "megumin_husbandrl" }
+    ]
+  },
+  {
+    role: "Secretary",
+    members: [{ name: "白", alias: "bakuya", discord: "baiye5536" }]
+  },
+  {
+    role: "Finance",
+    members: [{ name: "白", alias: "bakuya", discord: "baiye5536" }]
+  },
+  {
+    role: "Public Relations",
+    members: [{ name: "Ronfreddy", discord: "ronfreddy" }]
+  },
+  {
+    role: "Photographer",
+    members: [{ name: "拖鞋", alias: "tuohai", discord: "th0703" }]
+  },
+  {
+    role: "Social Media",
+    members: [{ name: "白", alias: "bakuya", discord: "baiye5536" }]
+  },
+  {
+    role: "Customer Service",
+    members: [
+      { name: "Hongen", discord: "hongen0w0" },
+      { name: "Megumin", discord: "megumin_husbandrl" }
+    ]
+  },
+  {
+    role: "Procurement",
+    members: [{ name: "Cumori", discord: "cumori_" }]
+  },
+  {
+    role: "Tournament Rules",
+    members: [
+      { name: "Leaf", discord: "gnlf" },
+      { name: "Ronfreddy", discord: "ronfreddy" }
+    ]
+  },
+  {
+    role: "Designer / Illustrator",
+    members: [
+      { name: "Hiro", discord: "hirosofa" },
+      { name: "Mochi", discord: "mon.mochii_" }
+    ]
+  },
+  {
+    role: "Mappooler",
+    members: [
+      { name: "Cumori", discord: "cumori_" },
+      { name: "Leaf", discord: "gnlf" },
+      { name: "Ronfreddy", discord: "ronfreddy" }
+    ]
+  },
+  {
+    role: "Streamer",
+    members: [
+      { name: "月", alias: "manyue", discord: "mangetsu_yume" },
+      { name: "Empty", discord: "emptybottle7513" }
+    ]
+  },
+  {
+    role: "Technician",
+    members: [
+      { name: "月", alias: "manyue", discord: "mangetsu_yume" },
+      { name: "Leaf", discord: "gnlf" },
+      { name: "Ronfreddy", discord: "ronfreddy" }
+    ]
+  },
+  {
+    role: "Event Crew",
+    members: [
+      { name: "白", alias: "bakuya", discord: "baiye5536" },
+      { name: "蛋", alias: "pettan", discord: "_twy" }
+    ]
+  }
+];
+
 function RegisterButton({ className = "primary-link" }: { className?: string }) {
   return (
     <a className={className} href={googleFormUrl} target="_blank" rel="noreferrer">
@@ -319,90 +411,16 @@ export default function Home() {
 
         <div className="velocity-stripe" aria-hidden="true" />
 
-        <div className="hero-grid">
-          <BackgroundBoard />
-
-          <div className="stage-lockup" aria-hidden="true">
-            <Image
-              src="/assets/vmt26/logo-white.png"
-              alt=""
-              width={300}
-              height={208}
-              priority
-            />
-            <span>Sunway Velocity</span>
-          </div>
-
-          <MobileCharacterSwitcher />
-
-          <div className="hero-copy">
-            <p className="eyebrow">Velocity maimai Tournament 2026</p>
-            <h1>VMT26</h1>
-            <p className="hero-text">
-              A two-stage maimai DX tournament built for players who want a
-              serious bracket, a loud arcade floor, and a community finals
-              weekend at Sunway Velocity.
-            </p>
-            <div className="hero-actions">
-              <RegisterButton />
-              <a className="secondary-link" href="#tournament-info">
-                View tournament info
-              </a>
-            </div>
-          </div>
-
-          <div className="hero-characters" aria-label="VMT26 main characters Salt and Milk">
-            <Image
-              className="character-silhouette silhouette-salt"
-              src="/assets/vmt26/hiro/Salt_Silhouette.png"
-              alt=""
-              width={5000}
-              height={4092}
-              aria-hidden="true"
-              priority
-              sizes="(max-width: 620px) 58vw, (max-width: 940px) 58vw, 640px"
-            />
-            <Image
-              className="character-silhouette silhouette-milk"
-              src="/assets/vmt26/hiro/Milk_Silhouette.png"
-              alt=""
-              width={5000}
-              height={4092}
-              aria-hidden="true"
-              priority
-              sizes="(max-width: 620px) 58vw, (max-width: 940px) 58vw, 640px"
-            />
-            <Image
-              className="character character-salt"
-              src="/assets/vmt26/hiro/Salt.png"
-              alt="Salt, one of the VMT26 main characters"
-              width={5000}
-              height={4092}
-              priority
-              sizes="(max-width: 620px) 62vw, (max-width: 940px) 64vw, 740px"
-            />
-            <Image
-              className="character character-milk"
-              src="/assets/vmt26/hiro/Milk.png"
-              alt="Milk, one of the VMT26 main characters"
-              width={5000}
-              height={4092}
-              priority
-              sizes="(max-width: 620px) 62vw, (max-width: 940px) 64vw, 740px"
-            />
-          </div>
-        </div>
+        <HeroShowcase registrationUrl={googleFormUrl} />
       </section>
 
       <section className="facts-band" id="tournament-info">
         <div className="rules-heading">
           <div className="section-heading">
             <p className="eyebrow">Tournament command board</p>
-            <h2>Know the route. Play it clean.</h2>
+            <h2>Every player deserves more than one chance.</h2>
             <p>
-              This is the player-facing guide to VMT26. Registration confirms
-              that you accept these rules and the organizing team&apos;s final
-              decisions.
+              In VMT26, every player gets another chance to keep the rhythm alive. With a double-elimination format, you can lose, learn, return, and fight your way back into the spotlight.
             </p>
           </div>
           <RulesJumpNav
@@ -467,7 +485,7 @@ export default function Home() {
 
           <div className="rules-accordion">
             {ruleSections.map((section, index) => (
-              <details className="rule-section" id={section.id} key={section.id} open={index === 0}>
+              <details className="rule-section" id={section.id} key={section.id}>
                 <summary>
                   <span className="rule-index">{String(index + 1).padStart(2, "0")}</span>
                   <span>
@@ -533,41 +551,78 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="creator-contact" id="contact">
-        <div className="creator-contact-intro">
-          <p className="eyebrow">Designed &amp; built by</p>
-          <p className="creator-handle">hongen0w0</p>
-          <p className="creator-role">Website Designer</p>
-        </div>
+      <section className="contact-band" id="contact">
+        <article className="creator-contact">
+          <div className="creator-contact-intro">
+            <p className="eyebrow">Designed &amp; built by</p>
+            <p className="creator-handle">hongen0w0</p>
+            <p className="creator-role">Website Designer</p>
+          </div>
 
-        <div className="creator-contact-copy">
-          <h2>Have a website idea worth making real?</h2>
-          <p>
-            I design distinctive, responsive websites for events, communities,
-            brands, and creative projects. VMT26 is one of the worlds I&apos;ve
-            helped bring to the screen.
-          </p>
-        </div>
+          <div className="creator-contact-copy">
+            <h2>Have a website idea worth making real?</h2>
+            <p>
+              I design distinctive, responsive websites for events, communities,
+              brands, and creative projects. VMT26 is one of the worlds I&apos;ve
+              helped bring to the screen.
+            </p>
+          </div>
 
-        <div className="creator-contact-actions">
-          <a
-            className="creator-email"
-            href="mailto:hongenlim2004@gmail.com"
-          >
-            <span>Start a conversation</span>
-            <strong>hongenlim2004@gmail.com</strong>
-          </a>
-          <a
-            className="creator-instagram"
-            href="https://www.instagram.com/hongen0w0/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Instagram · @hongen0w0
-          </a>
+          <div className="creator-contact-actions">
+            <a
+              className="creator-email"
+              href="mailto:hongenlim2004@gmail.com"
+            >
+              <span>Start a conversation</span>
+              <strong>hongenlim2004@gmail.com</strong>
+            </a>
+            <a
+              className="creator-instagram"
+              href="https://www.instagram.com/hongen0w0/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Instagram · @hongen0w0
+            </a>
+          </div>
+        </article>
+
+        <div className="crew-contact">
+          <div className="crew-contact-heading">
+            <div>
+              <p className="eyebrow">VMT26 crew directory</p>
+              <h2>The people keeping every beat on track.</h2>
+            </div>
+            <p className="crew-scroll-hint">
+              Swipe or use the arrow keys to explore all roles
+              <span aria-hidden="true">→</span>
+            </p>
+          </div>
+
+          <CrewCardTrack>
+            {crewRoles.map((crewRole) => (
+              <article className="crew-role-card" key={crewRole.role}>
+                <p className="crew-role-label">Crew role</p>
+                <h3>{crewRole.role}</h3>
+                <ul>
+                  {crewRole.members.map((member) => (
+                    <li key={`${crewRole.role}-${member.discord}`}>
+                      <div>
+                        <strong>{member.name}</strong>
+                        {member.alias ? <span>a.k.a. {member.alias}</span> : null}
+                      </div>
+                      <p>
+                        <span>Discord</span>
+                        <code>{member.discord}</code>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </CrewCardTrack>
         </div>
       </section>
     </main>
   );
 }
-
