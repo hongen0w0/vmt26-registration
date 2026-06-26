@@ -4,11 +4,15 @@ import Image from "next/image";
 import { useState } from "react";
 import type { HeroEdition } from "./hero-edition";
 
+type Vmt26CharacterKey = "salt" | "milk";
+
 const characters = {
   vmt26: [
     {
       name: "Salt",
       image: "/assets/vmt26/hiro/Salt.png",
+      alternateImage: "/assets/vmt26/hiro/salt2.PNG",
+      toggleKey: "salt",
       silhouette: "/assets/vmt26/hiro/Salt_Silhouette.png",
       width: 5000,
       height: 4092
@@ -16,6 +20,8 @@ const characters = {
     {
       name: "Milk",
       image: "/assets/vmt26/hiro/Milk.png",
+      alternateImage: "/assets/vmt26/hiro/milk2.PNG",
+      toggleKey: "milk",
       silhouette: "/assets/vmt26/hiro/Milk_Silhouette.png",
       width: 5000,
       height: 4092
@@ -40,11 +46,15 @@ const characters = {
 } as const;
 
 type MobileCharacterSwitcherProps = {
+  alternateCharacterArt: Record<Vmt26CharacterKey, boolean>;
   edition: HeroEdition;
+  onToggleCharacterArt: (character: Vmt26CharacterKey) => void;
 };
 
 export function MobileCharacterSwitcher({
-  edition
+  alternateCharacterArt,
+  edition,
+  onToggleCharacterArt
 }: MobileCharacterSwitcherProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const editionCharacters = characters[edition];
@@ -61,6 +71,14 @@ export function MobileCharacterSwitcher({
         {editionCharacters.map((character, index) => {
           const isActive = index === activeIndex;
           const characterClass = character.name.toLowerCase();
+          const toggleKey =
+            "toggleKey" in character ? character.toggleKey : undefined;
+          const alternateImage =
+            "alternateImage" in character ? character.alternateImage : undefined;
+          const isAlternate =
+            toggleKey !== undefined && alternateCharacterArt[toggleKey];
+          const image =
+            isAlternate && alternateImage ? alternateImage : character.image;
 
           return (
             <div
@@ -82,21 +100,51 @@ export function MobileCharacterSwitcher({
                   sizes="(max-width: 940px) 112vw, 1px"
                 />
               ) : null}
-              <Image
-                className="mobile-character-art"
-                src={character.image}
-                alt={
-                  isActive
-                    ? `${character.name}, one of the ${
-                        edition === "vmt26" ? "VMT26" : "VMT24"
-                      } main characters`
-                    : ""
-                }
-                width={character.width}
-                height={character.height}
-                priority
-                sizes="(max-width: 940px) 122vw, 1px"
-              />
+              {toggleKey && alternateImage ? (
+                <button
+                  className="mobile-character-art mobile-character-art-toggle"
+                  type="button"
+                  onClick={() => onToggleCharacterArt(toggleKey)}
+                  aria-label={`Show ${
+                    isAlternate ? "original" : "alternate"
+                  } ${character.name} art`}
+                  aria-pressed={isAlternate}
+                  tabIndex={isActive ? 0 : -1}
+                >
+                  <Image
+                    className="mobile-character-art-image"
+                    src={image}
+                    alt={
+                      isActive
+                        ? `${character.name}, one of the ${
+                            edition === "vmt26" ? "VMT26" : "VMT24"
+                          } main characters`
+                        : ""
+                    }
+                    width={character.width}
+                    height={character.height}
+                    priority
+                    sizes="(max-width: 940px) 122vw, 1px"
+                    key={image}
+                  />
+                </button>
+              ) : (
+                <Image
+                  className="mobile-character-art"
+                  src={image}
+                  alt={
+                    isActive
+                      ? `${character.name}, one of the ${
+                          edition === "vmt26" ? "VMT26" : "VMT24"
+                        } main characters`
+                      : ""
+                  }
+                  width={character.width}
+                  height={character.height}
+                  priority
+                  sizes="(max-width: 940px) 122vw, 1px"
+                />
+              )}
             </div>
           );
         })}

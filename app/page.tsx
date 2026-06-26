@@ -214,55 +214,63 @@ const ruleSections = [
 
 const pastPhotos = [
   {
-    src: "/assets/vmt24/gallery/20241207_181528.jpg",
-    alt: "VMT24 winners and event guests posing in front of maimai cabinets"
+    src: "/assets/vmt24/gallery/1.jpg",
+    alt: "VMT24 past event photo 1"
   },
   {
-    src: "/assets/vmt24/gallery/20241207_181641.jpg",
-    alt: "VMT24 medal winner receiving congratulations beside a maimai cabinet"
+    src: "/assets/vmt24/gallery/2.jpg",
+    alt: "VMT24 past event photo 2"
   },
   {
-    src: "/assets/vmt24/gallery/DSC00225.jpg",
-    alt: "VMT24 spectators gathered around the tournament play area"
+    src: "/assets/vmt24/gallery/3.jpg",
+    alt: "VMT24 past event photo 3"
   },
   {
-    src: "/assets/vmt24/gallery/DSC00304.jpg",
-    alt: "VMT24 finalists and event guest posing with medals"
+    src: "/assets/vmt24/gallery/4.jpg",
+    alt: "VMT24 past event photo 4"
   },
   {
-    src: "/assets/vmt24/gallery/DSC00337.jpg",
-    alt: "VMT24 medal presentation beside a maimai cabinet"
+    src: "/assets/vmt24/gallery/5.jpg",
+    alt: "VMT24 past event photo 5"
   },
   {
-    src: "/assets/vmt24/gallery/DSC00343.jpg",
-    alt: "VMT24 finalists and organizers posing together after the tournament"
+    src: "/assets/vmt24/gallery/6.jpg",
+    alt: "VMT24 past event photo 6"
   },
   {
-    src: "/assets/vmt24/gallery/DSC00349.jpg",
-    alt: "VMT24 players sharing a candid moment at the arcade"
+    src: "/assets/vmt24/gallery/7.jpg",
+    alt: "VMT24 past event photo 7"
   },
   {
-    src: "/assets/vmt24/gallery/IMG_2767.jpg",
-    alt: "Wide group photo of VMT24 players and organizers"
+    src: "/assets/vmt24/gallery/8.jpg",
+    alt: "VMT24 past event photo 8"
   },
   {
-    src: "/assets/vmt24/gallery/IMG_3803.jpg",
-    alt: "VMT24 event display and character plush collection"
+    src: "/assets/vmt24/gallery/9.jpg",
+    alt: "VMT24 past event photo 9"
   },
   {
-    src: "/assets/vmt24/gallery/IMG_3855.jpg",
-    alt: "VMT24 winners and event guests posing at the maimai cabinets"
+    src: "/assets/vmt24/gallery/10.jpg",
+    alt: "VMT24 past event photo 10"
   }
 ];
 
 const merchPhotos = [
   {
-    src: "/assets/merch/shirt-front-01.jpg",
-    alt: "VMT26 black shirt front design"
+    src: "/assets/merch/salt-front.jpg",
+    alt: "VMT26 Salt shirt front design"
   },
   {
-    src: "/assets/merch/shirt-back-02.jpg",
-    alt: "VMT26 black shirt back design"
+    src: "/assets/merch/salt-back.jpg",
+    alt: "VMT26 Salt shirt back design"
+  },
+  {
+    src: "/assets/merch/milk-front.jpg",
+    alt: "VMT26 Milk shirt front design"
+  },
+  {
+    src: "/assets/merch/milk-back.jpg",
+    alt: "VMT26 Milk shirt back design"
   }
 ];
 
@@ -298,11 +306,11 @@ const crewRoles = [
   },
   {
     role: "Secretary",
-    members: [{ name: "白", alias: "bakuya", discord: "baiye5536" }]
+    members: [{ name: "bakuya", discord: "baiye5536" }]
   },
   {
     role: "Finance",
-    members: [{ name: "白", alias: "bakuya", discord: "baiye5536" }]
+    members: [{ name: "bakuya", discord: "baiye5536" }]
   },
   {
     role: "Public Relations",
@@ -310,11 +318,11 @@ const crewRoles = [
   },
   {
     role: "Photographer",
-    members: [{ name: "拖鞋", alias: "tuohai", discord: "th0703" }]
+    members: [{ name: "tuohai", discord: "th0703" }]
   },
   {
     role: "Social Media",
-    members: [{ name: "白", alias: "bakuya", discord: "baiye5536" }]
+    members: [{ name: "bakuya", discord: "baiye5536" }]
   },
   {
     role: "Customer Service",
@@ -352,14 +360,14 @@ const crewRoles = [
   {
     role: "Streamer",
     members: [
-      { name: "月", alias: "manyue", discord: "mangetsu_yume" },
+      { name: "manyue", discord: "mangetsu_yume" },
       { name: "Empty", discord: "emptybottle7513" }
     ]
   },
   {
     role: "Technician",
     members: [
-      { name: "月", alias: "manyue", discord: "mangetsu_yume" },
+      { name: "manyue", discord: "mangetsu_yume" },
       { name: "Leaf", discord: "gnlf" },
       { name: "Ronfreddy", discord: "ronfreddy" }
     ]
@@ -367,8 +375,8 @@ const crewRoles = [
   {
     role: "Event Crew",
     members: [
-      { name: "白", alias: "bakuya", discord: "baiye5536" },
-      { name: "蛋", alias: "pettan", discord: "_twy" }
+      { name: "bakuya", discord: "baiye5536" },
+      { name: "pettan", discord: "_twy" }
     ]
   }
 ];
@@ -417,7 +425,7 @@ export default function Home() {
       <section className="facts-band" id="tournament-info">
         <div className="rules-heading">
           <div className="section-heading">
-            <p className="eyebrow">Tournament command board</p>
+            <p className="eyebrow">Tournament Information</p>
             <h2>Every player deserves more than one chance.</h2>
             <p>
               In VMT26, every player gets another chance to keep the rhythm alive. With a double-elimination format, you can lose, learn, return, and fight your way back into the spotlight.
@@ -439,6 +447,16 @@ export default function Home() {
         </div>
 
         <p className="schedule-disclaimer">All dates are subject to change. Updates will be announced through VMT26&apos;s official social media.</p>
+
+        <figure className="mobile-character-divider mobile-character-divider-salt" aria-hidden="true">
+          <Image
+            src="/assets/vmt26/hiro/salt-back-2.PNG"
+            alt=""
+            width={5000}
+            height={4092}
+            sizes="(max-width: 619px) 128vw, 1px"
+          />
+        </figure>
 
         <section className="roadmap-panel" aria-labelledby="roadmap-title">
           <div className="roadmap-heading">
@@ -551,6 +569,16 @@ export default function Home() {
         </div>
       </section>
 
+      <figure className="mobile-character-divider mobile-character-divider-milk" aria-hidden="true">
+        <Image
+          src="/assets/vmt26/hiro/milk-back-2.PNG"
+          alt=""
+          width={5000}
+          height={4092}
+          sizes="(max-width: 619px) 128vw, 1px"
+        />
+      </figure>
+
       <section className="contact-band" id="contact">
         <article className="creator-contact">
           <div className="creator-contact-intro">
@@ -609,7 +637,6 @@ export default function Home() {
                     <li key={`${crewRole.role}-${member.discord}`}>
                       <div>
                         <strong>{member.name}</strong>
-                        {member.alias ? <span>a.k.a. {member.alias}</span> : null}
                       </div>
                       <p>
                         <span>Discord</span>

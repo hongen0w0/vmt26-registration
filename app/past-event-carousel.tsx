@@ -172,7 +172,7 @@ export function PastEventCarousel({ photos }: PastEventCarouselProps) {
       }
 
       const focusable = Array.from(
-        dialog.querySelectorAll<HTMLElement>("button:not(:disabled), [href], [tabindex]:not([tabindex='-1'])")
+        dialog.querySelectorAll<HTMLElement>("button:not(:disabled):not([aria-disabled='true']), [href], [tabindex]:not([tabindex='-1'])")
       );
 
       if (focusable.length === 0) {
@@ -264,6 +264,8 @@ export function PastEventCarousel({ photos }: PastEventCarouselProps) {
   }
 
   const activePhoto = photos[activeIndex];
+  const isFirstPhoto = activeIndex === 0;
+  const isLastPhoto = activeIndex === photos.length - 1;
 
   return (
     <>
@@ -343,18 +345,28 @@ export function PastEventCarousel({ photos }: PastEventCarouselProps) {
           <button
             className="vmt-carousel-arrow is-previous"
             type="button"
-            onClick={() => goToPostPhoto(activeIndex - 1)}
-            disabled={activeIndex === 0}
+            onClick={() => {
+              if (!isFirstPhoto) {
+                goToPostPhoto(activeIndex - 1);
+              }
+            }}
+            aria-disabled={isFirstPhoto ? "true" : undefined}
             aria-label="Previous photo"
+            tabIndex={isFirstPhoto ? -1 : undefined}
           >
             <ChevronIcon direction="previous" />
           </button>
           <button
             className="vmt-carousel-arrow is-next"
             type="button"
-            onClick={() => goToPostPhoto(activeIndex + 1)}
-            disabled={activeIndex === photos.length - 1}
+            onClick={() => {
+              if (!isLastPhoto) {
+                goToPostPhoto(activeIndex + 1);
+              }
+            }}
+            aria-disabled={isLastPhoto ? "true" : undefined}
             aria-label="Next photo"
+            tabIndex={isLastPhoto ? -1 : undefined}
           >
             <ChevronIcon direction="next" />
           </button>
@@ -447,18 +459,28 @@ export function PastEventCarousel({ photos }: PastEventCarouselProps) {
                 <button
                   className="vmt-lightbox-arrow is-previous"
                   type="button"
-                  onClick={() => goToLightboxPhoto(activeIndex - 1)}
-                  disabled={activeIndex === 0}
+                  onClick={() => {
+                    if (!isFirstPhoto) {
+                      goToLightboxPhoto(activeIndex - 1);
+                    }
+                  }}
+                  aria-disabled={isFirstPhoto ? "true" : undefined}
                   aria-label="Previous photo"
+                  tabIndex={isFirstPhoto ? -1 : undefined}
                 >
                   <ChevronIcon direction="previous" />
                 </button>
                 <button
                   className="vmt-lightbox-arrow is-next"
                   type="button"
-                  onClick={() => goToLightboxPhoto(activeIndex + 1)}
-                  disabled={activeIndex === photos.length - 1}
+                  onClick={() => {
+                    if (!isLastPhoto) {
+                      goToLightboxPhoto(activeIndex + 1);
+                    }
+                  }}
+                  aria-disabled={isLastPhoto ? "true" : undefined}
                   aria-label="Next photo"
+                  tabIndex={isLastPhoto ? -1 : undefined}
                 >
                   <ChevronIcon direction="next" />
                 </button>

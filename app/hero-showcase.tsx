@@ -10,6 +10,8 @@ type HeroShowcaseProps = {
   registrationUrl: string;
 };
 
+type Vmt26CharacterKey = "salt" | "milk";
+
 const editions: Record<
   HeroEdition,
   {
@@ -19,6 +21,8 @@ const editions: Record<
       name: string;
       className: string;
       image: string;
+      alternateImage?: string;
+      toggleKey?: Vmt26CharacterKey;
       width: number;
       height: number;
     }[];
@@ -32,6 +36,8 @@ const editions: Record<
         name: "Salt",
         className: "character-salt",
         image: "/assets/vmt26/hiro/Salt.png",
+        alternateImage: "/assets/vmt26/hiro/salt2.PNG",
+        toggleKey: "salt",
         width: 5000,
         height: 4092
       },
@@ -39,6 +45,8 @@ const editions: Record<
         name: "Milk",
         className: "character-milk",
         image: "/assets/vmt26/hiro/Milk.png",
+        alternateImage: "/assets/vmt26/hiro/milk2.PNG",
+        toggleKey: "milk",
         width: 5000,
         height: 4092
       }
@@ -68,6 +76,12 @@ const editions: Record<
 
 export function HeroShowcase({ registrationUrl }: HeroShowcaseProps) {
   const [edition, setEdition] = useState<HeroEdition>("vmt26");
+  const [alternateCharacterArt, setAlternateCharacterArt] = useState<
+    Record<Vmt26CharacterKey, boolean>
+  >({
+    salt: false,
+    milk: false
+  });
   const activeEdition = editions[edition];
   const isVmt24 = edition === "vmt24";
   const nextEdition = isVmt24 ? "VMT26" : "VMT24";
@@ -113,7 +127,16 @@ export function HeroShowcase({ registrationUrl }: HeroShowcaseProps) {
         <span>Sunway Velocity</span>
       </div>
 
-      <MobileCharacterSwitcher edition={edition} />
+      <MobileCharacterSwitcher
+        alternateCharacterArt={alternateCharacterArt}
+        edition={edition}
+        onToggleCharacterArt={(character) =>
+          setAlternateCharacterArt((current) => ({
+            ...current,
+            [character]: !current[character]
+          }))
+        }
+      />
 
       <div className="hero-copy">
         <p className="eyebrow">
@@ -177,20 +200,63 @@ export function HeroShowcase({ registrationUrl }: HeroShowcaseProps) {
           </>
         ) : null}
 
-        {activeEdition.characters.map((character) => (
-          <Image
-            className={`character ${character.className}${
-              isVmt24 ? " character-vmt24" : ""
-            }`}
-            src={character.image}
-            alt={`${character.name}, one of the ${activeEdition.title} main characters`}
-            width={character.width}
-            height={character.height}
-            priority
-            sizes="(max-width: 940px) 1px, 740px"
-            key={character.name}
-          />
-        ))}
+        {activeEdition.characters.map((character) => {
+          const isAlternate =
+            character.toggleKey !== undefined &&
+            alternateCharacterArt[character.toggleKey];
+          const image =
+            isAlternate && character.alternateImage
+              ? character.alternateImage
+              : character.image;
+          const className = `character ${character.className}${
+            isVmt24 ? " character-vmt24" : ""
+          }`;
+
+          if (character.toggleKey && character.alternateImage) {
+            return (
+              <button
+                className={`${className} character-toggle`}
+                type="button"
+                onClick={() =>
+                  setAlternateCharacterArt((current) => ({
+                    ...current,
+                    [character.toggleKey as Vmt26CharacterKey]:
+                      !current[character.toggleKey as Vmt26CharacterKey]
+                  }))
+                }
+                aria-label={`Show ${
+                  isAlternate ? "original" : "alternate"
+                } ${character.name} art`}
+                aria-pressed={isAlternate}
+                key={character.name}
+              >
+                <Image
+                  className="character-toggle-image"
+                  src={image}
+                  alt={`${character.name}, one of the ${activeEdition.title} main characters`}
+                  width={character.width}
+                  height={character.height}
+                  priority
+                  sizes="(max-width: 940px) 1px, 740px"
+                  key={image}
+                />
+              </button>
+            );
+          }
+
+          return (
+            <Image
+              className={className}
+              src={image}
+              alt={`${character.name}, one of the ${activeEdition.title} main characters`}
+              width={character.width}
+              height={character.height}
+              priority
+              sizes="(max-width: 940px) 1px, 740px"
+              key={character.name}
+            />
+          );
+        })}
       </div>
 
       <span className="sr-only" aria-live="polite">
