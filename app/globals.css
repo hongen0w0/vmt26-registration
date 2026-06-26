@@ -2390,6 +2390,10 @@ h3 {
     letter-spacing: -0.08em;
   }
 
+  .hero-grid-vmt26 .hero-copy h1 {
+    margin-top: clamp(-22px, calc(34px - 5dvh), 0px);
+  }
+
   .hero-copy::before {
     inset: -72px -58px;
     background: radial-gradient(
@@ -2512,6 +2516,14 @@ h3 {
 
   .mobile-character-milk .mobile-character-art {
     left: 53%;
+  }
+
+  .hero-grid-vmt26 .mobile-character-silhouette {
+    bottom: -68px;
+  }
+
+  .hero-grid-vmt26 .mobile-character-art {
+    bottom: -80px;
   }
 
   .mobile-character-switcher-vmt24 {
@@ -2722,13 +2734,17 @@ h3 {
     margin-top: 76px;
   }
 
+  .mobile-character-switcher-vmt24 .mobile-character-viewport {
+    height: clamp(430px, 114vw, 470px);
+  }
+
   .mobile-character-switcher-vmt24 .mobile-character-art {
-    bottom: clamp(-105px, calc(-25dvh + 120px), -60px);
-    width: clamp(460px, calc(110dvh - 460px), 520px);
+    bottom: -105px;
+    width: clamp(460px, 122vw, 520px);
   }
 
   .mobile-character-switcher-vmt24 .mobile-character-riz .mobile-character-art {
-    bottom: calc(clamp(-105px, calc(-25dvh + 120px), -60px) - 20px);
+    bottom: -125px;
   }
 }
 
