@@ -14,6 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/assets/vmt24/bg.jpg" />
+      </head>
       <body>{children}</body>
     </html>
   );

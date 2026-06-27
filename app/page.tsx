@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CrewCardTrack } from "./crew-card-track";
+import { DesktopCharacterFeature } from "./desktop-character-feature";
 import { HeroShowcase } from "./hero-showcase";
 import { PastEventCarousel } from "./past-event-carousel";
 import { RulesJumpNav } from "./rules-jump-nav";
@@ -306,11 +307,11 @@ const crewRoles = [
   },
   {
     role: "Secretary",
-    members: [{ name: "bakuya", discord: "baiye5536" }]
+    members: [{ name: "Byakuya", discord: "baiye5536" }]
   },
   {
     role: "Finance",
-    members: [{ name: "bakuya", discord: "baiye5536" }]
+    members: [{ name: "Byakuya", discord: "baiye5536" }]
   },
   {
     role: "Public Relations",
@@ -318,11 +319,11 @@ const crewRoles = [
   },
   {
     role: "Photographer",
-    members: [{ name: "tuohai", discord: "th0703" }]
+    members: [{ name: "Tuohai", discord: "th0703" }]
   },
   {
     role: "Social Media",
-    members: [{ name: "bakuya", discord: "baiye5536" }]
+    members: [{ name: "Byakuya", discord: "baiye5536" }]
   },
   {
     role: "Customer Service",
@@ -360,14 +361,14 @@ const crewRoles = [
   {
     role: "Streamer",
     members: [
-      { name: "manyue", discord: "mangetsu_yume" },
+      { name: "Mangetsu", discord: "mangetsu_yume" },
       { name: "Empty", discord: "emptybottle7513" }
     ]
   },
   {
     role: "Technician",
     members: [
-      { name: "manyue", discord: "mangetsu_yume" },
+      { name: "Mangetsu", discord: "mangetsu_yume" },
       { name: "Leaf", discord: "gnlf" },
       { name: "Ronfreddy", discord: "ronfreddy" }
     ]
@@ -375,8 +376,8 @@ const crewRoles = [
   {
     role: "Event Crew",
     members: [
-      { name: "bakuya", discord: "baiye5536" },
-      { name: "pettan", discord: "_twy" }
+      { name: "Byakuya", discord: "baiye5536" },
+      { name: "Pettan", discord: "_twy" }
     ]
   }
 ];
@@ -519,6 +520,14 @@ export default function Home() {
         </div>
       </section>
 
+      <DesktopCharacterFeature
+        character="salt"
+        height={2261}
+        image="/assets/vmt26/hiro/salt-back-2-cropped.PNG"
+        label="Salt VMT26 character artwork"
+        width={5000}
+      />
+
       <section className="gallery-band" id="past-event">
         <div className="section-heading split-heading">
           <div>
@@ -568,6 +577,14 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <DesktopCharacterFeature
+        character="milk"
+        height={2625}
+        image="/assets/vmt26/hiro/milk-back-2-cropped.PNG"
+        label="Milk VMT26 character artwork"
+        width={4899}
+      />
 
       <figure className="mobile-character-divider mobile-character-divider-milk" aria-hidden="true">
         <Image

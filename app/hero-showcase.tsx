@@ -74,6 +74,49 @@ const editions: Record<
   }
 };
 
+const heroImagePreloads = [
+  {
+    src: "/assets/vmt26/hiro/salt2.PNG",
+    width: 5000,
+    height: 4092
+  },
+  {
+    src: "/assets/vmt26/hiro/milk2.PNG",
+    width: 5000,
+    height: 4092
+  },
+  {
+    src: "/assets/vmt24/acid.png",
+    width: 2480,
+    height: 3508
+  },
+  {
+    src: "/assets/vmt24/riz.png",
+    width: 2480,
+    height: 3508
+  }
+] as const;
+
+function HeroImagePreloader() {
+  return (
+    <div className="hero-image-preloader" aria-hidden="true">
+      {heroImagePreloads.map((image) => (
+        <Image
+          src={image.src}
+          alt=""
+          width={image.width}
+          height={image.height}
+          loading="eager"
+          fetchPriority="low"
+          decoding="async"
+          sizes="(max-width: 940px) 122vw, 740px"
+          key={image.src}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function HeroShowcase({ registrationUrl }: HeroShowcaseProps) {
   const [edition, setEdition] = useState<HeroEdition>("vmt26");
   const [alternateCharacterArt, setAlternateCharacterArt] = useState<
@@ -93,6 +136,7 @@ export function HeroShowcase({ registrationUrl }: HeroShowcaseProps) {
   return (
     <div className={`hero-grid hero-grid-${edition}`}>
       <BackgroundBoard edition={edition} />
+      <HeroImagePreloader />
 
       <a
         className="hero-artist-link"
@@ -116,17 +160,6 @@ export function HeroShowcase({ registrationUrl }: HeroShowcaseProps) {
         Switch to {nextEdition}
       </button>
 
-      <div className="stage-lockup" aria-hidden="true">
-        <Image
-          src="/assets/vmt26/logo-white.png"
-          alt=""
-          width={300}
-          height={208}
-          priority
-        />
-        <span>Sunway Velocity</span>
-      </div>
-
       <MobileCharacterSwitcher
         alternateCharacterArt={alternateCharacterArt}
         edition={edition}
@@ -142,7 +175,20 @@ export function HeroShowcase({ registrationUrl }: HeroShowcaseProps) {
         <p className="eyebrow">
           Velocity maimai Tournament {isVmt24 ? "2024" : "2026"}
         </p>
-        <h1>{activeEdition.title}</h1>
+        {isVmt24 ? (
+          <h1>{activeEdition.title}</h1>
+        ) : (
+          <h1 className="hero-logo-title">
+            <Image
+              className="hero-logo-title-image"
+              src="/assets/vmt26/logo-white.png"
+              alt={activeEdition.title}
+              width={300}
+              height={208}
+              priority
+            />
+          </h1>
+        )}
         <p className="hero-text">
           {isVmt24 ? (
             "The chapter that started it all."
